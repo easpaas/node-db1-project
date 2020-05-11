@@ -23,8 +23,11 @@ router.get("/:id", (req, res) => {
     .first()
     .then(count => {
       console.log(count);
-      res.status(200).json({ data: count });
-    })
+      count ?
+        res.status(200).json({ data: count })
+      :
+        res.status(404).json({ errorMessage: 'That id doesn\'t exist.' })
+      })
     .catch(error => {
       console.log(error);
       res.status(500).json({ errorMessage: error.message });
@@ -72,6 +75,24 @@ router.put("/:id", (req, res) => {
     .catch(error => {
       console.log(error);
       res.status(500).json({ errorMessage: error.message });
+    });
+});
+
+router.delete("/:id", (req, res) => {
+  const { id } = req.params;
+  db("accounts")
+    .where({ id })
+    .del()
+    .then(success => {
+      console.log(success);
+      success ? 
+        res.status(204).json()
+      :
+        res.status(404).json({ errorMessage: 'That id doesn\'t exist' })
+    })
+    .catch(error => {
+      console.log(error)
+      res.status(500).json({ errorMessage: error.message })
     });
 });
 
