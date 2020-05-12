@@ -1,0 +1,23 @@
+.App {
+  text-align: center;
+}
+.App h1 {
+  padding: 4%;
+  margin: 0;
+  background-color: black;
+  color: burlywood;
+}
+
+.container {
+  background-color: burlywood;
+  padding: 2%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.account {
+  width: 25%;
+  margin: 2% auto;
+  padding: 2%;
+  border: 4px solid;
+}
