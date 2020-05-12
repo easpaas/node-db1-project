@@ -9,8 +9,8 @@ function App() {
   useEffect(() => {
     axios.get('http://localhost:5000/api/accounts')
       .then(response => {
-        console.log(response.data)
-        setAccounts(response.data);
+        console.log(response.data.data)
+        setAccounts(response.data.data);
       })
       .catch(error => {
         console.log(error);
